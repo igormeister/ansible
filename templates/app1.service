@@ -1,0 +1,16 @@
+[Unit]
+Description=Sample service
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /opt/sample/service.jar
+PORT={{ app_port }}
+
+User=ihor
+Restart=on-failure
+StartLimitBurst=2
+StartLimitInterval=30

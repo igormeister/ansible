@@ -1,0 +1,20 @@
+{#
+TODO: reuse your unit from Lab 1
+TODO: Path to jar should use variables {{ app_dir }}/{{ app_file }}
+TODO: Environment variable for PORT should use value from variable {{ app_port }}
+#}
+[Unit]
+Description=Sample service
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar $app_dir/$app_file
+PORT= 8080
+
+Restart=on-failure
+StartLimitBurst=2
+StartLimitInterval=30
